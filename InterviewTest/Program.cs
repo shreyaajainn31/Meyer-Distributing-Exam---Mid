@@ -37,11 +37,27 @@ namespace InterviewTest
             string connectionString = "server=localhost;user=shreya;password=root;database=meyer_database;";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
+            // Checking if the connection is open
             try{
                 connection.Open();
+
                 if (connection.State == ConnectionState.Open)
                 {
                     Console.WriteLine("Connection is open");
+                    String query1 = "Select * from Customer";
+                    MySqlCommand command = new MySqlCommand(query1, connection);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int customerId = reader.GetInt32("customerId");
+                        string customerName = reader.GetString("customerName");
+                        string customerEmail = reader.GetString("customerEmail");
+                        string customerPhoneNumber = reader.GetString("customerPhoneNumber");
+                        string customerAddress = reader.GetString("customerAddress");
+                        Console.WriteLine($"customerId:{customerId}, Name: {customerName}, phone: {customerPhoneNumber}, address: {customerAddress}");
+                    }
+                    reader.Close();
+
                 }
                 else
                 {
