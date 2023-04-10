@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using InterviewTest.Customers;
 using InterviewTest.Orders;
@@ -29,6 +31,32 @@ namespace InterviewTest
 
             // 1: Refactor the customer classes to be repository/database based
             // 2: Create unit tests
+
+
+            // Connecting mysql database
+            string connectionString = "server=localhost;user=shreya;password=root;database=meyer_database;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            try{
+                connection.Open();
+                if (connection.State == ConnectionState.Open)
+                {
+                    Console.WriteLine("Connection is open");
+                }
+                else
+                {
+                    Console.WriteLine("Connection is not open");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+}
+
 
             ProcessTruckAccessoriesExample();
 
