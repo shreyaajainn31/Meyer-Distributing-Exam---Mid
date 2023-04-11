@@ -43,7 +43,9 @@ namespace InterviewTest
 
                 if (connection.State == ConnectionState.Open)
                 {
-                    OrderRepositoryTest();
+                     AddOrderRepositoryTest();
+                    // RemoveOrderRepositoryTest();
+                    
 
                 }
                 else
@@ -68,12 +70,15 @@ namespace InterviewTest
             Console.ReadKey();
         }
 
-        private static void OrderRepositoryTest(){
-            
+        private static void RemoveOrderRepositoryTest(){
             ICustomer customer = new CarDealershipCustomer(orderRepo, returnRepo);
-            IOrder order = new Order("12345", customer);
+            IOrder order = new Order("1234563", customer);
+            orderRepo.Remove(order);
+        }
+        private static void AddOrderRepositoryTest(){
+            ICustomer customer = new CarDealershipCustomer(orderRepo, returnRepo);
+            IOrder order = new Order("1234563", customer);
             order.AddProduct(new BedLiner());
-            order.AddProduct(new SyntheticOil());
             orderRepo.Add(order);
         }
         private static void ProcessTruckAccessoriesExample()
@@ -81,8 +86,6 @@ namespace InterviewTest
             var customer = GetTruckAccessoriesCustomer();
 
             IOrder order = new Order("TruckAccessoriesOrder123", customer);
-            order.AddProduct(new HitchAdapter());
-            order.AddProduct(new BedLiner());
             customer.CreateOrder(order);
 
             IReturn rga = new Return("TruckAccessoriesReturn123", order);
