@@ -6,6 +6,9 @@ namespace InterviewTest.Orders
 {
     public class Order : IOrder
     {
+        // public Order(){
+
+        // }
         public Order(string orderNumber, ICustomer customer)
         {
             OrderNumber = orderNumber;

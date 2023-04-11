@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using InterviewTest.Customers;
 using InterviewTest.Orders;
@@ -30,20 +32,69 @@ namespace InterviewTest
             // 1: Refactor the customer classes to be repository/database based
             // 2: Create unit tests
 
-            ProcessTruckAccessoriesExample();
 
-            ProcessCarDealershipExample();
+            // Connecting mysql database
+            string connectionString = "server=localhost;user=shreya;password=root;database=meyer_database;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            // Checking if the connection is open
+            try{
+                connection.Open();
+
+                if (connection.State == ConnectionState.Open)
+                {
+                      AddOrderRepositoryTest();
+                    // RemoveOrderRepositoryTest();
+
+                }
+                else
+                {
+                    Console.WriteLine("Connection is not open");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+}
+
+
+            // ProcessTruckAccessoriesExample();
+
+            // ProcessCarDealershipExample();
 
             Console.ReadKey();
         }
 
+        private static void RemoveOrderRepositoryTest(){
+            ICustomer customer = new CarDealershipCustomer(orderRepo, returnRepo);
+            IOrder order = new Order("45678", customer);
+            orderRepo.Remove(order);
+        }
+        private static void AddOrderRepositoryTest(){
+            ICustomer customer = new CarDealershipCustomer(orderRepo, returnRepo);
+            IOrder order = new Order("1234563", customer);
+            order.AddProduct(new BedLiner());
+            order.AddProduct(new SyntheticOil());
+            orderRepo.Add(order);
+
+            ICustomer customer1 = new TruckAccessoriesCustomer(orderRepo, returnRepo);
+            IOrder order1 = new Order("45678", customer1);
+
+            order1.AddProduct(new BedLiner());
+            order1.AddProduct(new HitchAdapter());
+            order1.AddProduct(new ReplacementBumper());
+            orderRepo.Add(order1);
+
+        }
         private static void ProcessTruckAccessoriesExample()
         {
             var customer = GetTruckAccessoriesCustomer();
 
             IOrder order = new Order("TruckAccessoriesOrder123", customer);
-            order.AddProduct(new HitchAdapter());
-            order.AddProduct(new BedLiner());
             customer.CreateOrder(order);
 
             IReturn rga = new Return("TruckAccessoriesReturn123", order);

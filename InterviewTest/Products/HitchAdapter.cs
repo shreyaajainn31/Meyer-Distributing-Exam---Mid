@@ -2,6 +2,7 @@
 {
     public class HitchAdapter : IProduct
     {
+         public int ProductId { get; set; } = 2;
         public float GetSellingPrice()
         {
             return 70;

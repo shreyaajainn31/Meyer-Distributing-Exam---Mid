@@ -11,6 +11,7 @@ namespace InterviewTest.Customers
 
         }
 
+        public override int CustomerId { get; set; } = 2;
         public override string GetName()
         {
             return "Meyer Truck Equipment";

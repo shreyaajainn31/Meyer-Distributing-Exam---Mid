@@ -2,6 +2,8 @@
 {
     public class SyntheticOil : IProduct
     {
+         public int ProductId { get; set; } = 4;
+
         public float GetSellingPrice()
         {
             return 25;

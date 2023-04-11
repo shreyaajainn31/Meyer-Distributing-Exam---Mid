@@ -15,6 +15,7 @@ namespace InterviewTest.Customers
             _orderRepository = orderRepo;
             _returnRepository = returnRepo;
         }
+        public abstract int CustomerId { get; set; }
 
         public abstract string GetName();
         

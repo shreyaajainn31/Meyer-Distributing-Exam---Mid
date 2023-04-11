@@ -4,11 +4,13 @@ namespace InterviewTest.Orders
 {
     public class OrderedProduct
     {
+        public int ProductId { get; set; }
         public OrderedProduct(IProduct product)
         {
             Product = product;
         }
 
+ 
         public IProduct Product { get; set; }
     }
 }
