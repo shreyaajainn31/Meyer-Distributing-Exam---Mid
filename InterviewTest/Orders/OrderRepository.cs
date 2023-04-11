@@ -81,19 +81,20 @@ namespace InterviewTest.Orders
                     conn.Open();
                     using (MySqlTransaction transaction = conn.BeginTransaction())
                     {
+
+                         // Delete the order from orderProduct table
+                        string orderProductQuery = "DELETE from OrderProduct where orderNumber = @orderNumber";
+                        MySqlCommand orderProductCommand = new MySqlCommand(orderProductQuery, conn);
+                        orderProductCommand.Parameters.AddWithValue("@orderNumber", orderNumber);
+                        orderProductCommand.ExecuteNonQuery();
+
                         // Delete the order from the Orders table
                         string orderQuery = "DELETE from Orders where orderNumber = @orderNumber";
                         MySqlCommand orderCommand = new MySqlCommand(orderQuery, conn);
                         orderCommand.Parameters.AddWithValue("@orderNumber", orderNumber);
                         orderCommand.ExecuteNonQuery();
 
-                        // Delete the order from orderProduct table
-                        string orderProductQuery = "DELETE from OrderProduct where orderNumber = @orderNumber";
-                        MySqlCommand orderProductCommand = new MySqlCommand(orderProductQuery, conn);
-                        orderProductCommand.Parameters.AddWithValue("@orderNumber", orderNumber);
-                        orderProductCommand.ExecuteNonQuery();
-
-                        // Insert the order products into the OrderProduct table
+                       
                        
                         transaction.Commit();
                     }
