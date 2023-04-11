@@ -43,8 +43,9 @@ namespace InterviewTest
 
                 if (connection.State == ConnectionState.Open)
                 {
-                      AddOrderRepositoryTest();
+                    //  AddOrderRepositoryTest();
                     // RemoveOrderRepositoryTest();
+                    GetTotalSales();
 
                 }
                 else
@@ -67,6 +68,11 @@ namespace InterviewTest
             // ProcessCarDealershipExample();
 
             Console.ReadKey();
+        }
+
+        private static void GetTotalSales(){
+            CustomerBase customerBase = new ConcreteCustomer(orderRepo, returnRepo);
+            Console.WriteLine(customerBase.GetTotalSales());
         }
 
         private static void RemoveOrderRepositoryTest(){
