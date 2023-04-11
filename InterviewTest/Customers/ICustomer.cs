@@ -6,6 +6,8 @@ namespace InterviewTest.Customers
 {
     public interface ICustomer
     {
+        int CustomerId { get; set; }
+
         string GetName();
         void CreateOrder(IOrder order);
         void CreateReturn(IReturn rga);

@@ -11,6 +11,8 @@ namespace InterviewTest.Customers
 
         }
 
+        public override int CustomerId { get; set; } = 1;
+
         public override string GetName()
         {
             return "Ruxer Ford Lincoln, Inc.";

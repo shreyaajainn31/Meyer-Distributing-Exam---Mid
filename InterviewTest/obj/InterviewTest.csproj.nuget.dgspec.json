@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/shreya/Downloads/Meyer Distributing Exam - Mid/InterviewTest/InterviewTest.csproj": {}
+    "/Users/shreya/Desktop/Meyer-Distributing-Exam---Mid/InterviewTest/InterviewTest.csproj": {}
   },
   "projects": {
-    "/Users/shreya/Downloads/Meyer Distributing Exam - Mid/InterviewTest/InterviewTest.csproj": {
+    "/Users/shreya/Desktop/Meyer-Distributing-Exam---Mid/InterviewTest/InterviewTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/shreya/Downloads/Meyer Distributing Exam - Mid/InterviewTest/InterviewTest.csproj",
+        "projectUniqueName": "/Users/shreya/Desktop/Meyer-Distributing-Exam---Mid/InterviewTest/InterviewTest.csproj",
         "projectName": "InterviewTest",
-        "projectPath": "/Users/shreya/Downloads/Meyer Distributing Exam - Mid/InterviewTest/InterviewTest.csproj",
+        "projectPath": "/Users/shreya/Desktop/Meyer-Distributing-Exam---Mid/InterviewTest/InterviewTest.csproj",
         "packagesPath": "/Users/shreya/.nuget/packages/",
-        "outputPath": "/Users/shreya/Downloads/Meyer Distributing Exam - Mid/InterviewTest/obj/",
+        "outputPath": "/Users/shreya/Desktop/Meyer-Distributing-Exam---Mid/InterviewTest/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/shreya/.nuget/NuGet/NuGet.Config"

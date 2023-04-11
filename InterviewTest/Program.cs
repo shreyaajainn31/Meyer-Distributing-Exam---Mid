@@ -43,20 +43,7 @@ namespace InterviewTest
 
                 if (connection.State == ConnectionState.Open)
                 {
-                    Console.WriteLine("Connection is open");
-                    String query1 = "Select * from Customer";
-                    MySqlCommand command = new MySqlCommand(query1, connection);
-                    MySqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        int customerId = reader.GetInt32("customerId");
-                        string customerName = reader.GetString("customerName");
-                        string customerEmail = reader.GetString("customerEmail");
-                        string customerPhoneNumber = reader.GetString("customerPhoneNumber");
-                        string customerAddress = reader.GetString("customerAddress");
-                        Console.WriteLine($"customerId:{customerId}, Name: {customerName}, phone: {customerPhoneNumber}, address: {customerAddress}");
-                    }
-                    reader.Close();
+                    OrderRepositoryTest();
 
                 }
                 else
@@ -74,13 +61,21 @@ namespace InterviewTest
 }
 
 
-            ProcessTruckAccessoriesExample();
+            // ProcessTruckAccessoriesExample();
 
-            ProcessCarDealershipExample();
+            // ProcessCarDealershipExample();
 
             Console.ReadKey();
         }
 
+        private static void OrderRepositoryTest(){
+            
+            ICustomer customer = new CarDealershipCustomer(orderRepo, returnRepo);
+            IOrder order = new Order("12345", customer);
+            order.AddProduct(new BedLiner());
+            order.AddProduct(new SyntheticOil());
+            orderRepo.Add(order);
+        }
         private static void ProcessTruckAccessoriesExample()
         {
             var customer = GetTruckAccessoriesCustomer();
