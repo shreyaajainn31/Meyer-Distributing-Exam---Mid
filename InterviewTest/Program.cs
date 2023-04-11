@@ -43,8 +43,8 @@ namespace InterviewTest
 
                 if (connection.State == ConnectionState.Open)
                 {
-                    //  AddOrderRepositoryTest();
-                     RemoveOrderRepositoryTest();
+                      AddOrderRepositoryTest();
+                    // RemoveOrderRepositoryTest();
 
                 }
                 else
@@ -71,15 +71,15 @@ namespace InterviewTest
 
         private static void RemoveOrderRepositoryTest(){
             ICustomer customer = new CarDealershipCustomer(orderRepo, returnRepo);
-            IOrder order = new Order("1234563", customer);
+            IOrder order = new Order("45678", customer);
             orderRepo.Remove(order);
         }
         private static void AddOrderRepositoryTest(){
             ICustomer customer = new CarDealershipCustomer(orderRepo, returnRepo);
             IOrder order = new Order("1234563", customer);
-            // order.AddProduct(new BedLiner());
-            // order.AddProduct(new SyntheticOil());
-            // orderRepo.Add(order);
+            order.AddProduct(new BedLiner());
+            order.AddProduct(new SyntheticOil());
+            orderRepo.Add(order);
 
             ICustomer customer1 = new TruckAccessoriesCustomer(orderRepo, returnRepo);
             IOrder order1 = new Order("45678", customer1);
